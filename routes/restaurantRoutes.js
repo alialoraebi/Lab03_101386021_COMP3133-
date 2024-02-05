@@ -29,23 +29,23 @@ router.get('/restaurants', async (req, res) => {
 
 // All restaurant details by cuisine
 // http://localhost:3000/restaurants/cuisine/Italian
-// router.get('/restaurants/cuisine/:cuisine', async (req, res) => {
-//     try {
-//         const restaurants = await restaurantModel.find({ cuisine: req.params.cuisine });
-//         res.status(200).json({
-//             status: 'success',
-//             results: restaurants.length,
-//             data: {
-//                 restaurants
-//             }
-//         });
-//     } catch (err) {
-//         res.status(404).json({
-//             status: 'fail',
-//             message: err
-//         });
-//     }
-// });
+router.get('/restaurants/cuisine/:cuisine', async (req, res) => {
+    try {
+        const restaurants = await restaurantModel.find({ cuisine: req.params.cuisine });
+        res.status(200).json({
+            status: 'success',
+            results: restaurants.length,
+            data: {
+                restaurants
+            }
+        });
+    } catch (err) {
+        res.status(404).json({
+            status: 'fail',
+            message: err
+        });
+    }
+});
 
 // All restaurant details by id, name, cusine, location
 // http://localhost:3000/restaurants/:id
